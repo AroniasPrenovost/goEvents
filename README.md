@@ -95,6 +95,16 @@ $ curl localhost:8080/employees -X DELETE
 
 ### Running Project 
 
+### installing Docker
+https://levelup.gitconnected.com/complete-guide-to-create-docker-container-for-your-golang-application-80f3fb59a15e
+
+
+### build Docker image 
+
+```
+docker build . -t go-dock
+```
+
 ### generate .env and assign environment + db connection variables
 
 ```
