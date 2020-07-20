@@ -1,0 +1,12 @@
+{{ define "Login" }}
+  {{ template "Header" }}
+    {{ template "Menu" }} 
+   <h2>Login to admin portal</h2>  
+    <form method="POST" action="update">
+      <input type="hidden" name="uid" value="" />
+      <label> Username </label><input type="text" name="-user_name" value=""  /><br />
+      <label> Password </label><input type="text" name="password" value=""  /><br />
+      <input type="submit" value="Login" />
+    </form><br />    
+  {{ template "Footer" }}
+{{ end }}
