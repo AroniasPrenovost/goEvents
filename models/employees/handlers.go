@@ -69,8 +69,17 @@ func Employees(w http.ResponseWriter, r *http.Request) {
             insForm.Exec(name, city)
 
             defer db.Close()
-            
-            http.Redirect(w, r, "/", 301)
+
+
+            jsonBytes, err := json.Marshal(insForm)
+            if err != nil {
+                w.WriteHeader(http.StatusInternalServerError)
+                w.Write([]byte(err.Error()))
+            }
+        
+            w.Header().Add("content-type", "application/json")
+            w.WriteHeader(http.StatusOK)
+            w.Write(jsonBytes)
  
             log.Println("POST: added new employee")
 
