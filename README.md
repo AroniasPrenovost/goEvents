@@ -1,6 +1,6 @@
 # REST API example written in Go 
 
-## Requirements
+### Requirements
 
 To be able to show the desired features of curl this REST API must match a few
 requirements:
@@ -54,7 +54,7 @@ $ curl localhost:8080/employees -X DELETE
 ```
 
 ### Long-Term Goals 
-## Build a real world "production" REST API: 
+### Build a real world "production" REST API: 
 
 * [ ] Scalable, must be able to run more than one instance.
 
