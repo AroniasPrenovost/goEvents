@@ -95,13 +95,13 @@ $ curl localhost:8080/employees -X DELETE
 
 ### Running Project 
 
-# generate .env and assign environment + db connection variables
+### generate .env and assign environment + db connection variables
 
 ```
 $ cp .env-sample .env
 ```
 
-# run project 
+### run project 
 
 ```
 $ go run main.go
