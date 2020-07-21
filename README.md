@@ -29,6 +29,29 @@ A employee object should look like this:
 
 Data is stored is MySQL 
 
+
+### Running Project 
+
+### generate .env and assign environment + db connection variables
+```
+$ cp .env-sample .env
+```
+
+### Build go module
+```
+$ go build
+```
+
+### build Docker image 
+```
+$ docker build -t {image name} .
+```
+
+### run project 
+```
+$ docker run -p 8080:8080 {image name}
+```
+
 ### API endpoints
 
 ## employees
@@ -92,26 +115,3 @@ $ curl localhost:8080/employees -X DELETE
 
 * [ ] Passing go fmt, go lint, or better, go-metalinter in the CI.
 
-
-### Running Project 
-
-### generate .env and assign environment + db connection variables
-```
-$ cp .env-sample .env
-```
-
-### Build go module
-```
-$ go build
-```
-
-### build Docker image 
-```
-$ docker build -t {image name} .
-```
-
-### run project 
-```
-$ docker run -p 8080:8080 {image name}
-```
- 
