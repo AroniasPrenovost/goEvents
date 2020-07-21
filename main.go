@@ -219,7 +219,7 @@ func Employees(w http.ResponseWriter, r *http.Request) {
             defer db.Close()
             http.Redirect(w, r, "/", 301)
 
-            log.Println("DELETE: deleted    all employees")
+            log.Println("DELETE: deleted all employees")
 
     }
 }

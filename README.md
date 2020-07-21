@@ -112,6 +112,6 @@ $ docker build -t {image name} .
 
 ### run project 
 ```
-$ docker run -p 80:80 {image name}
+$ docker run -p 8080:8080 {image name}
 ```
  
