@@ -1,4 +1,4 @@
-module goCRUD
+module github.com/eventful
 
 go 1.14
 
