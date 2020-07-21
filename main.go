@@ -24,7 +24,8 @@ type Env struct {
 	DB_port string // int? 
 	DB_name string
 	DB_user string
-	DB_password string
+    DB_password string
+    API_endpoint string
 	Admin_password string
 }
 
@@ -40,7 +41,8 @@ func InitEnv() (Env) {
 	ENV.DB_port = os.Getenv("DB_PORT")
 	ENV.DB_user = os.Getenv("DB_USER")
 	ENV.DB_name = os.Getenv("DB_NAME")
-	ENV.DB_password = os.Getenv("DB_PASSWORD")
+    ENV.DB_password = os.Getenv("DB_PASSWORD")
+    ENV.API_endpoint = os.Getenv("API_ENDPOINT")
 	ENV.Admin_password = os.Getenv("ADMIN_PASSWORD")
 
 	return ENV
@@ -59,8 +61,7 @@ func InitDB() (db *sql.DB) {
     env := InitEnv()	
     var err error
 
-    // connection_string := env.DB_user + ":" + env.DB_password + "@tcp(127.0.0.1:" + env.DB_port + ")/" + env.DB_name
-    connection_string := env.DB_user + ":" + env.DB_password + "@tcp(host.docker.internal:" + env.DB_port + ")/" + env.DB_name
+    connection_string := env.DB_user + ":" + env.DB_password + "@tcp(" + env.API_endpoint + ":" + env.DB_port + ")/" + env.DB_name
     db, err = sql.Open("mysql", connection_string)
     if err != nil {
         log.Panic(err)
