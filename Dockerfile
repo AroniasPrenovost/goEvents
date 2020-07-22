@@ -1,20 +1,14 @@
-# We specify the base image we need for our
-# go application
+# specify the base image for the Go application
 FROM golang:latest 
-# We create an /app directory within our
-# image that will hold our application source
-# files
+# create an /app directory within image that holds the application's source files
 RUN mkdir /app
-# We copy everything in the root directory
-# into our /app directory
+# copy everything in the root directory to our /app directory
 ADD . /app
-# We specify that we now wish to execute 
-# any further commands inside our /app
-# directory
+# specify that we now wish to execute any further commands inside our /app directory
 WORKDIR /app
-# we run go build to compile the binary
-# executable of our Go program
+# automatically rebuild and restart the Go application if any of the Go source files change
+RUN go get github.com/githubnemo/CompileDaemon
+# run go build to compile the binary executable of our Go program
 RUN go build -o main .
-# Our start command which kicks off
-# our newly created binary executable
-CMD ["/app/main"]
+# the start command kicks off our newly created binary executable
+ENTRYPOINT CompileDaemon --build="go build main.go" --command=./main

@@ -14,7 +14,7 @@ import (
 
 /* 
 *
-    Environment variables
+    Environment variables & database connection
 *
 */
  
@@ -47,13 +47,6 @@ func InitEnv() (Env) {
 
 	return ENV
 }
-
-/* 
-*
-    Database connection
-*
-*/
- 
 
 // var DB *sql.DB
 func InitDB() (db *sql.DB) {
@@ -99,7 +92,7 @@ func Employees(w http.ResponseWriter, r *http.Request) {
 
         case "GET": 
 
-        fmt.Fprintf(w, "hello GET")
+        fmt.Println("hello there")
             
             db := InitDB()
             selDB, err := db.Query("SELECT * FROM Employees ORDER BY id ASC")

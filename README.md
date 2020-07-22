@@ -1,6 +1,6 @@
 # REST API example written in Go 
 
-### Requirements
+## Requirements
 
 To be able to show the desired features of curl this REST API must match a few
 requirements:
@@ -11,7 +11,7 @@ requirements:
 * [x] `POST /employees` returns status 415 if content is not `application/json`
 * [x] `GET /employees/random` redirects (Status 302) to a random employee
 
-### Data Types
+## Data Types
 
 A employee object should look like this:
 ```json
@@ -25,36 +25,41 @@ A employee object should look like this:
   }
 ```
 
-### Persistence
+## Persistence
 
-Data is stored is MySQL 
+Data is stored is MySQL
 
-
-### Running Project 
+## Project Setup 
 
 ### generate .env and assign environment + db connection variables
 ```
 $ cp .env-sample .env
 ```
 
-### Build go module
+### build go module manually
 ```
 $ go build
 ```
 
-### build Docker image 
+### Docker - running container manually 
+1. build image 
 ```
 $ docker build -t {image name} .
 ```
-
-### run project 
+2. run 
 ```
 $ docker run -p 8080:8080 {image name}
 ```
 
-### API endpoints
+### Docker - running container with docker-compose (recommended)
+Ensure ports are mapped correctly in `.env` and `docker-compose.yml`
+```
+$ docker-compose up
+```
 
-## employees
+## API endpoints
+
+### employees
 
 * `GET /employees` returns list of employees as JSON
 ```
@@ -68,7 +73,7 @@ $ curl localhost:8080/employees -X POST -d '{"name": "User121", "city": "Seattle
 
 * `PUT /employees` update employee record
 ```
-$ curl localhost:8080/employees -X PUT -d '{"name": "Aronias", "city": "Kent", "id": 54}' -H "Content-Type: application/json"
+$ curl localhost:8080/employees -X PUT -d '{"name": "Fabrice", "city": "Paris", "id": 65}' -H "Content-Type: application/json"
 ```
 
 * `DELETE /employees` deletes all employee records 
@@ -76,8 +81,9 @@ $ curl localhost:8080/employees -X PUT -d '{"name": "Aronias", "city": "Kent", "
 $ curl localhost:8080/employees -X DELETE
 ```
 
-### Long-Term Goals 
-### Build a real world "production" REST API: 
+## Long-Term Goals 
+
+Build a real world "production" REST API: 
 
 * [ ] Scalable, must be able to run more than one instance.
 
@@ -114,4 +120,3 @@ $ curl localhost:8080/employees -X DELETE
 * [ ] Clean git history with structured commits and useful messages. No merge master commits.
 
 * [ ] Passing go fmt, go lint, or better, go-metalinter in the CI.
-
